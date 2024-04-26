@@ -21,7 +21,7 @@ Esta API é desenvolvida em PHP utilizando o framework Laravel. O objetivo é fo
 
 ### Instalação
 
-1. Clone este repositório: `git clone https://github.com/seu-usuario/nome-do-repositorio.git`
+1. Clone este repositório: `git clone https://github.com/RanCwb/API-PHP---LARAVELt`
 2. Acesse o diretório do projeto: `cd nome-do-repositorio`
 3. Instale as dependências do Composer: `composer install`
 4. Copie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente, especialmente as relacionadas ao banco de dados.
