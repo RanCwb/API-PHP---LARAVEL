@@ -14,9 +14,8 @@ class UserController extends Controller
 {   
     
     $userData = $request->only(["email","password","name"]);
-
-        if (UserModel::where('email', $userData['email'])->exists() || UserModel::where('name', $userData['name'])->exists()) {
-
+    
+        if (UserModel::where('email', $userData['email'])->orWhere('name', $userData['name'])->exists()) {
             return response()->json([
                 'message' => 'Email or name already exists.',
                 'status' => 'error'
