@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //users routes
 Route::post('/users/register', [UserController::class, 'handleRegister']);
 Route::get('/users/{id}', [UserController::class, 'handleGetUser']);
+//Order Routes
+
+//Category Routes
+Route::post('/categories/create', [Category::class, 'createCategory']);
+Route::get('/categories', [Category::class, 'getCategories']);

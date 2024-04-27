@@ -10,7 +10,6 @@ use App\Models\UserModel;
 class UserController extends Controller
 {
 
-
     public function handleRegister(Request $request, UserService $userService)
     {
 
@@ -22,6 +21,7 @@ class UserController extends Controller
                 'status' => 'error'
             ], 400);
         }
+
 
         try {
             $response = $userService->registerUser($userData);
@@ -36,7 +36,7 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'User created successfully.',
                 'status' => 'success',
-                'data' => $response
+                'data' => $response->select('name', 'email')->get()
             ], 201);
         } catch (\Exception $e) {
             return response()->json([
@@ -49,6 +49,21 @@ class UserController extends Controller
 
     public function handleGetUser(UserService $detailUserService, $id)
     {
+
+        if (!is_numeric($id)) {
+            return response()->json([
+                'message' => 'Invalid user ID.',
+                'status' => 'error'
+            ], 400);
+        }
+
+        if (UserModel::where('id', $id)->doesntExist()) {
+            return response()->json([
+                'message' => 'User not found.',
+                'status' => 'error'
+            ], 404);
+        }
+
         try {
             $user = $detailUserService->getDetailUser($id);
             if (isset($user)) {

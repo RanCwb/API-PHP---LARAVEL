@@ -31,6 +31,7 @@ class UserService
     }
 
 
+
     public function getDetailUser($id)
     {
         $user = UserModel::select('name', 'email')->where('id', $id)->firstOrFail();

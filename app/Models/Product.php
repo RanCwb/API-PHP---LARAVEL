@@ -8,9 +8,9 @@ use Illuminate\Notifications\Notifiable;
 
 class Product extends Model
 {
-    use HasFactory,Notifiable;
+    use HasFactory, Notifiable;
 
-    protected $table = 'product';
+    protected $table = 'products';
 
     public $timestamps = true;
 
@@ -22,8 +22,8 @@ class Product extends Model
         'category_id'
     ];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class, 'category_id');
     }
-
 }
